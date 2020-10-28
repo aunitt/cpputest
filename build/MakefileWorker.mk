@@ -480,6 +480,9 @@ flags:
 	@$(call debug_print_list,$(LD_LIBRARIES))
 	@echo "Create libraries with ARFLAGS:"
 	@$(call debug_print_list,$(ARFLAGS))
+	@echo "C++ Include:"
+	@$(call debug_print_list,$(INCLUDES_DIRS_EXPANDED))
+
 
 TEST_DEPS = $(TEST_OBJS) $(MOCKS_OBJS) $(PRODUCTION_CODE_START) $(TARGET_LIB) $(USER_LIBS) $(PRODUCTION_CODE_END) $(CPPUTEST_LIB) $(STDLIB_CODE_START)
 test-deps: $(TEST_DEPS)
@@ -579,5 +582,8 @@ debug:
 	@$(call debug_print_list,$(STUFF_TO_CLEAN))
 	@echo Includes:
 	@$(call debug_print_list,$(INCLUDES))
+	@echo "Warning flags:"
+	@$(call debug_print_list,$(CPPUTEST_WARNINGFLAGS))
+	
 
 -include $(OTHER_MAKEFILE_TO_INCLUDE)
